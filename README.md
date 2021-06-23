@@ -1,0 +1,3 @@
+# Test_Admin
+一个用于测试SpringBoot核心技术的管理系统实例
+实现了SpringBoot的绝大部分核心功能的测试，详细技术内容详见GitHub库中的SpringBoot核心技术的PDF学习笔记
