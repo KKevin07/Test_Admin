@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test_thymeleaf_web.mapper.CityMapper">
+
+<!--      public void insert(City city);-->
+<!--    <insert id="insert" useGeneratedKeys="true" keyProperty="id">&lt;!&ndash; 主键（回填）自增useGeneratedKeys="true" keyProperty="id" &ndash;&gt;-->
+<!--        insert into city(name,state,country) values(#{name},#{state},#{country})-->
+<!--    </insert>-->
+<!--此处注释掉，是为了用注解再去实现一遍  此处的city(name,state,country) 内不加‘ ’ 字符串标识符 -->
+</mapper>

@@ -1,0 +1,104 @@
+spring:
+  datasource:
+    url:  jdbc:mysql://localhost:3306/springboot
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver   # mysql  8版本依赖的驱动设置格式
+
+    druid:
+      aop-patterns: com.example.test_thymeleaf_web.*  #spring监控 #组件监控  路径设置  （此为当前主程序下）
+      filters: stat,wall,slf4j    #设置开启哪些监控功能  stat 是SQL监控  wall是防火墙监控  其他的详见数据源自动配置文件 DruidFilterConfiguration.java      pdf版笔记
+      stat-view-servlet:    #配置监控页功能
+        enabled: true      #底层配置  默认为false  需要开启
+        login-username: admin
+        login-password: 123456
+        reset-enable: false
+
+      web-stat-filter:  #监控web （监控web应用和url）
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'  #自定义时，要把默认的也带上， #（底层判定优先用用户的配置，配置为空才用默认的）覆盖默认值，所以要带全
+      filter:  #对上面filters的详细配置  可参照官方文档
+        stat:
+          slow-sql-millis: 1000      #慢查询的时间  单位  毫秒 / ms   (意为  超过1000ms的 sql查询 都为慢查询,默认值为3*1000)
+          log-slow-sql: true
+        wall:
+          enabled: true  #开启防火墙
+          config:
+            drop-table-allow: false  #删除表格对的权限。  false为 不允许删除表格
+  #            update-allow: false #更新操作的权限  false为关闭，会拦截更新操作
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  # 手动引入的druid已被注释，相关配置绑定的配置项 也要被注释
+#    filters: stat,wall
+#    tomcat:
+#      max-active: 12
+
+
+  jdbc:
+    template:
+      query-timeout: 3   #查询超时时间设置
+#  redis:
+#    host: r-bp1ztu58ux6tuvw15ipd.redis.rds.aliyuncs.com
+#    port: 6379
+#    password: weiwen:springwind10L
+#    client-type: jedis   #设置连接工厂
+#
+#    jedis:   #jedis配置
+#      pool:
+#        max-active: 10
+
+#    lettuce:  #lettuce配置
+#      pool:  #线程池
+#        max-active: 10
+#        min-idle: 5
+# 未能成功连接-->   url: redis://weiwen:springwind10L@r-bp1ztu58ux6tuvw15ipd.redis.rds.aliyuncs.com:6379   #格式:  redis://user:password@example.com(公网地址):6379(端口号)
+#配置mybatis规则
+mybatis:
+#  config-location: classpath:mybatis/mybatis_config.xml   #全局配置文件位置   开启configuration:项  就不能使用全局配置文件
+  mapper-locations: classpath:mybatis/mapper/*.xml        #sql映射文件位置
+  configuration:  # 指定mybatis全局配置文件中的相关配置项
+    map-underscore-to-camel-case: true  #开启驼峰
+
+
+#management： 是所有actuator的配置
+management:
+  endpoints:
+    enabled-by-default: true #默认开启所有监控端点   默认值为true
+    web:
+      exposure:
+        include: '*'     #以web方式暴露所有端点
+
+  endpoint:
+    health:
+      show-details: always
+      enabled: true      #总开关之外的，分体开关
+
+    info:
+      enabled: true
+
+    beans:
+      enabled: true
+
+    metrics:
+      enabled: true
+info:
+  appName: boot-admin
+  appVersion: 1.0.0
+  mavenProjectName: @project.artifactId@
+  mavenProjectVersion: @project.version@
+
+

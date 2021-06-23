@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--    <settings>-->
+<!--        <setting name="mapUnderscoreToCamelCase" value="true"/>-->
+<!--    </settings>-->
+
+<!-- (此次注释掉，是因为有更好的yaml配置办法) 开启驼峰命名规则，将数据库的列名  USER_NAME   绑定到bean中的类的属性 userName     -->
+
+</configuration>
